@@ -10,8 +10,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IBookStoreRepository<Author> ,AuthorDBRepo>();
 builder.Services.AddScoped<IBookStoreRepository<Book> ,BookDBRepo>();
+var connectionString = builder.Configuration["SqlCon"] ?? builder.Configuration.GetConnectionString("SqlCon");
+
 builder.Services.AddDbContext<BookStoreDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("SqlCon")));
+    options.UseSqlServer(connectionString));
 
 var app = builder.Build();
 RunMigrations(app);
