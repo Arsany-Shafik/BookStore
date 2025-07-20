@@ -1,4 +1,4 @@
-#BookStore
+# BookStore
 - .Net project with entity framework core and mvc.
 - Entity framework with 1 to 1 relationship (author table, Book table).
 - SQL database with name and password.
